@@ -16,6 +16,13 @@
 
 如果想要更换其他刷新头部，那么PTR这个项目，还是需要自己去琢磨琢磨的，因为每个应用的需求是不一样的。
 
+##compile 
+
+```java
+    com.zengcanxiang:ptrlistviewfragment:1.0.0
+```
+
+
 ##使用
 
 使用步骤是很简单的，在DEMO中有。
@@ -128,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
 This library is licensed under the [Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
-See [`LICENSE`](LICENSE) for full of the license text.
+See [LICENSE][9] for full of the license text.
 
     Copyright (C) 2015 [Hanks](https://github.com/ZengcxAperson)
 
@@ -144,8 +151,7 @@ See [`LICENSE`](LICENSE) for full of the license text.
     See the License for the specific language governing permissions and
     limitations under the License.
 
-
-  [1]: https://github.com/zengcanxiang/PtrListViewFragment/blob/master/README.md
+ 
 
   [1]: https://github.com/desmond1121/Android-Ptr-Comparison
   [2]: https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh
@@ -155,3 +161,4 @@ See [`LICENSE`](LICENSE) for full of the license text.
   [6]: https://github.com/zengcanxiang/PtrListViewFragment/blob/master/photo/refrsh_1.png
   [7]: https://github.com/zengcanxiang/PtrListViewFragment/blob/master/photo/refrsh_2.png
   [8]: https://github.com/zengcanxiang/BaseAdapter
+  [9]: https://github.com/zengcanxiang/PtrListViewFragment/blob/master/License
