@@ -1,14 +1,31 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+
+def siteUrl = 'https://github.com/zengcanxiang/PtrListViewFragment'
+def gitUrl = 'https://github.com/zengcanxiang/PtrListViewFragment.git'
+
+version = "1.0.0"
+group = "com.zengcanxiang"
+
+ext {
+    ProjectDescription = "Integrated PTR drop-down refresh function and load more features of the fragment"
+    JcName = "PtrListViewFragment"
+    developer_id = "zengcanxiang"
+    developer_name = "zengcanxiang"
+    developer_email = "zengcanxiang@gmail.com"
+}
 
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName version
     }
     buildTypes {
         release {
@@ -25,4 +42,88 @@ dependencies {
     compile 'in.srain.cube:ultra-ptr:1.0.11'
     //android material design风格进度条
     compile 'me.zhanghai.android.materialprogressbar:library:1.1.4'
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name ProjectDescription
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id developer_id
+                        name developer_name
+                        email developer_email
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+android.libraryVariants.all { variant ->
+    println "create generate${variant.name.capitalize()}Javadoc"
+    task("generate${variant.name.capitalize()}Javadoc", type: Javadoc) {
+        source = variant.javaCompile.source
+        classpath = files(variant.javaCompile.classpath.files, project.android.getBootClasspath())
+        options {
+            encoding "utf-8"
+            links "http://docs.oracle.com/javase/7/docs/api/"
+            linksOffline "http://d.android.com/reference", "${android.sdkDirectory}/docs/reference"
+        }
+        exclude '**/BuildConfig.java'
+        exclude '**/R.java'
+    }
+    task("javadoc${variant.name.capitalize()}Jar", type: Jar, dependsOn: "generate${variant.name.capitalize()}Javadoc") {
+        classifier = 'javadoc'
+        from tasks.getByName("generate${variant.name.capitalize()}Javadoc").destinationDir
+    }
+    artifacts {
+        archives tasks.getByName("javadoc${variant.name.capitalize()}Jar")
+    }
+}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    options.encoding = "UTF-8"
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = JcName
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
 }
