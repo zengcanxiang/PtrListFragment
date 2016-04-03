@@ -19,7 +19,7 @@
 ##compile 
 
 ```java
-    com.zengcanxiang:ptrlistviewfragment:1.0.0
+    com.zengcanxiang:ptrlistviewfragment:1.0.1
 ```
 
 

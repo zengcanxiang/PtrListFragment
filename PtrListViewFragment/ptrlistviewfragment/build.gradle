@@ -6,7 +6,7 @@ apply plugin: 'com.jfrog.bintray'
 def siteUrl = 'https://github.com/zengcanxiang/PtrListViewFragment'
 def gitUrl = 'https://github.com/zengcanxiang/PtrListViewFragment.git'
 
-version = "1.0.0"
+version = "1.0.1"
 group = "com.zengcanxiang"
 
 ext {
