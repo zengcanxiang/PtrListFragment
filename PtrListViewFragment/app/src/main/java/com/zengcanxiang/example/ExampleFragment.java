@@ -1,4 +1,4 @@
-package com.zengcanxiang.ptrlistviewfragment;
+package com.zengcanxiang.example;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.zengcanxiang.baseAdapter.absListView.HelperAdapter;
 import com.zengcanxiang.baseAdapter.absListView.HelperHolder;
+import com.zengcanxiang.ptrlistviewfragment.ListViewFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class ExampleFragment extends ListViewFragment {
 //        默认开启了刷新功能
 //        installRefresh(true);
         installLoadMore(true);
-        inItActivityWritCode();
+        initOk();
     }
 
     @Override

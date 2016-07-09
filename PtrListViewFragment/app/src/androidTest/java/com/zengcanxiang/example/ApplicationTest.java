@@ -1,4 +1,4 @@
-package com.zengcanxiang.ptrlistviewfragment;
+package com.zengcanxiang.example;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

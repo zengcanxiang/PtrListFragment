@@ -54,6 +54,7 @@ public abstract class ListViewFragment extends BaseFragment implements AbsListVi
         mPtrFrameLayout = (PtrFrameLayout) getView(mPtr_LayoutId);
     }
 
+
     @Override
     public void setViewsContent() {
         mAdapter = bindAdapter();
@@ -84,6 +85,12 @@ public abstract class ListViewFragment extends BaseFragment implements AbsListVi
         }
     }
 
+    /**
+     * 初始化完成
+     */
+    protected void initOk(){
+        inItActivityWritCode();
+    }
 
     /**
      * 刷新

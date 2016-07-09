@@ -1,4 +1,4 @@
-package com.zengcanxiang.ptrlistviewfragment;
+package com.zengcanxiang.example;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +24,6 @@ public class MainActivity extends AppCompatActivity {
 //        fragment.setLoadMore_LayoutId(R.layout.test_load_more);
 //        fragment.setLoadMore_viewId(R.id.test_loadMoreView);
 //        将fragment加载到activity中
-        getFragmentManager().beginTransaction().add(R.id.testFragment, fragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.testFragment, fragment).commit();
     }
 }

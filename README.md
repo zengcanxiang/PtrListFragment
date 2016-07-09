@@ -16,10 +16,10 @@
 
 如果想要更换其他刷新头部，那么PTR这个项目，还是需要自己去琢磨琢磨的，因为每个应用的需求是不一样的。
 
-##compile 
+##compile
 
 ```java
-    com.zengcanxiang:ptrlistviewfragment:1.0.1
+    com.zengcanxiang:ptrlistviewfragment:1.0.2
 ```
 
 
@@ -43,7 +43,8 @@ public class ExampleFragment extends ListViewFragment {
 //        默认开启了刷新功能
 //        installRefresh(true);
         installLoadMore(true);
-        inItActivityWritCode();
+        //初始化工作完成调用该方法
+        initOk();
     }
 
     @Override
@@ -122,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
 //        fragment.setLoadMore_LayoutId(R.layout.test_load_more);
 //        fragment.setLoadMore_viewId(R.id.test_loadMoreView);
 //        将fragment加载到activity中
-        getFragmentManager().beginTransaction().add(R.id.testFragment, fragment).commit();
+        //因为继承的fragment是v4包中的，管理需要使用getSupportFragmentManager
+        getSupportFragmentManager().beginTransaction().add(R.id.testFragment,fragment).commit();
     }
 }
 ```
@@ -151,7 +153,7 @@ See [LICENSE][9] for full of the license text.
     See the License for the specific language governing permissions and
     limitations under the License.
 
- 
+
 
   [1]: https://github.com/desmond1121/Android-Ptr-Comparison
   [2]: https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh
